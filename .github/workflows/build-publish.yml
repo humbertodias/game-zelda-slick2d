@@ -28,7 +28,7 @@ jobs:
     strategy:
       matrix:
         java-version: [ 17 ]
-        distribution: [ 'zulu', 'zulu_prime', 'liberica', 'microsoft', 'corretto', 'openlogic', 'semeru', 'sap_machine', 'dragonwell' ]
+        distribution: [ 'corretto' ]
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK ${{ matrix.java-version }}
