@@ -8,49 +8,58 @@ import zelda.character.CharacterState;
  *
  * 
  */
-public class StandState extends CharacterState
-{
-	private final static String[] downAnimation	= {"Stand down"};
-	private final static String[] upAnimation	= {"Stand up"};
-	private final static String[] leftAnimation	= {"Stand left"};
-	private final static String[] rightAnimation= {"Stand right"};
+public class StandState extends CharacterState {
 
-	private Direction oldDirection;;
+    private final static String[] downAnimation = {
+        "Stand down"
+    };
 
-	public StandState(Character soldier)
-	{
-		super(soldier);
-		name = "StandState";
+    private final static String[] upAnimation = {
+        "Stand up"
+    };
 
-		oldDirection = soldier.getDirection();
+    private final static String[] leftAnimation = {
+        "Stand left"
+    };
 
-		switch (oldDirection)
-		{
-			case UP:
-				soldier.setAnimation(upAnimation);
-				break;
+    private final static String[] rightAnimation = {
+        "Stand right"
+    };
 
-			case DOWN:
-				soldier.setAnimation(downAnimation);
-				break;
+    private Direction oldDirection;;
 
-			case LEFT:
-				soldier.setAnimation(leftAnimation);
-				break;
+    public StandState(Character soldier) {
 
-			case RIGHT:
-				soldier.setAnimation(rightAnimation);
-				break;
-		}
-	}
+        super(soldier);
+        name = "StandState";
 
-	@Override
-	public void handleInput()
-	{
-		//System.out.println("oldDirection " + oldDirection + " new " + karacter.getDirection());
-		if (oldDirection != karacter.getDirection())
-        {
+        oldDirection = soldier.getDirection();
+
+        switch (oldDirection) {
+            case UP:
+                soldier.setAnimation(upAnimation);
+                break;
+
+            case DOWN:
+                soldier.setAnimation(downAnimation);
+                break;
+
+            case LEFT:
+                soldier.setAnimation(leftAnimation);
+                break;
+
+            case RIGHT:
+                soldier.setAnimation(rightAnimation);
+                break;
+        }
+    }
+
+    @Override
+    public void handleInput() {
+
+        //System.out.println("oldDirection " + oldDirection + " new " + karacter.getDirection());
+        if (oldDirection != karacter.getDirection()) {
             karacter.setState(new WalkState(karacter));
         }
-	}
+    }
 }

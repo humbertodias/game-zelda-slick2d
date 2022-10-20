@@ -14,10 +14,13 @@ public abstract class Soldier extends Character {
     protected Behavior behavior;
 
     protected long inputInterval = 50;
+
     protected long lastInput = System.currentTimeMillis();
+
     protected long lastHit = System.currentTimeMillis();
 
     public Soldier(Game game, int x, int y, Direction direction, String image) {
+
         super(game, x, y, 10, 20, direction, image);
 
         spriteLoc.put("Stand right", new Rectangle(0, 0, 27, 27));
@@ -51,11 +54,13 @@ public abstract class Soldier extends Character {
 
     @Override
     public void preAnimation() {
+
         state.handleAnimation();
     }
 
     @Override
     public void doInLoop() {
+
         if (System.currentTimeMillis() > lastInput + inputInterval) {
             state.handleInput();
             behavior.behave();
@@ -64,10 +69,12 @@ public abstract class Soldier extends Character {
     }
 
     public Behavior getBehavior() {
+
         return behavior;
     }
 
     public void setBehavior(Behavior behavior) {
+
         this.behavior = behavior;
     }
 }

@@ -12,14 +12,17 @@ import zelda.engine.Game;
 public class PolyCreator extends MouseAdapter {
 
     private final Game game;
+
     private final Polygon poly = new Polygon();
 
     public PolyCreator(Game game) {
+
         this.game = game;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
         if (e.isControlDown()) // print the coordinates in the console in int[] form.
         {
             System.out.print("int[] xpos = {");

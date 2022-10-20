@@ -8,22 +8,34 @@ import zelda.character.CharacterState;
  *
  * 
  */
-public class WalkState extends CharacterState
-{
-	private final String[] downAnimation	= {"Stand down", "Walk down 1", "Walk down 2", "Walk down 3"};
-	private final String[] upAnimation		= {"Stand up", "Walk up 1", "Walk up 2"};
-	private final String[] leftAnimation	= {"Stand left", "Walk left 1", "Walk left 2"};
-	private final String[] rightAnimation	= {"Stand right", "Walk right 1", "Walk right 2"};
+public class WalkState extends CharacterState {
+
+    private final String[] downAnimation = {
+        "Stand down", "Walk down 1", "Walk down 2", "Walk down 3"
+    };
+
+    private final String[] upAnimation = {
+        "Stand up", "Walk up 1", "Walk up 2"
+    };
+
+    private final String[] leftAnimation = {
+        "Stand left", "Walk left 1", "Walk left 2"
+    };
+
+    private final String[] rightAnimation = {
+        "Stand right", "Walk right 1", "Walk right 2"
+    };
 
     private static final int WALK_SPEED = 2;
 
-	private int oldX, oldY;
-	private long oldAnimationInterval;
+    private int oldX, oldY;
 
-    public WalkState(Character soldier)
-	{
-		super(soldier);
-		name = "WalkState";
+    private long oldAnimationInterval;
+
+    public WalkState(Character soldier) {
+
+        super(soldier);
+        name = "WalkState";
 
         karacter.setAnimationInterval(90);
 
@@ -33,123 +45,109 @@ public class WalkState extends CharacterState
         oldY = karacter.getY();
     }
 
-	@Override
-	public void handleInput()
-	{
-		switch (karacter.getDirection())
-		{
-			case UP:
-                up();
-				break;
+    @Override
+    public void handleInput() {
 
-			case DOWN:
+        switch (karacter.getDirection()) {
+            case UP:
+                up();
+                break;
+
+            case DOWN:
                 down();
                 break;
 
-			case LEFT:
-				left();
+            case LEFT:
+                left();
                 break;
 
-			case RIGHT:
+            case RIGHT:
                 right();
                 break;
-		}
-	}
+        }
+    }
 
-	public void left()
-	{
-		if (karacter.getAnimation() != leftAnimation)
-		{
-			karacter.setAnimation(leftAnimation);
-		}
+    public void left() {
 
-		if (karacter.getDirection() != Direction.LEFT)
-		{
-			karacter.setDirection(Direction.LEFT);
-		}
+        if (karacter.getAnimation() != leftAnimation) {
+            karacter.setAnimation(leftAnimation);
+        }
 
-		karacter.setWidth(29);
-		karacter.setX(karacter.getX() - WALK_SPEED);
-	}
+        if (karacter.getDirection() != Direction.LEFT) {
+            karacter.setDirection(Direction.LEFT);
+        }
 
-	public void right()
-	{
-		if (karacter.getAnimation() != rightAnimation)
-		{
-			karacter.setAnimation(rightAnimation);
-		}
+        karacter.setWidth(29);
+        karacter.setX(karacter.getX() - WALK_SPEED);
+    }
 
-		if (karacter.getDirection() != Direction.RIGHT)
-		{
-			karacter.setDirection(Direction.RIGHT);
-		}
+    public void right() {
 
-		karacter.setWidth(29);
-		karacter.setX(karacter.getX() + WALK_SPEED);
-	}
+        if (karacter.getAnimation() != rightAnimation) {
+            karacter.setAnimation(rightAnimation);
+        }
 
-	public void up()
-	{
-		if (karacter.getAnimation() != upAnimation)
-		{
-			karacter.setAnimation(upAnimation);
-		}
+        if (karacter.getDirection() != Direction.RIGHT) {
+            karacter.setDirection(Direction.RIGHT);
+        }
 
-		if (karacter.getDirection() != Direction.UP)
-		{
-			karacter.setDirection(Direction.UP);
-		}
+        karacter.setWidth(29);
+        karacter.setX(karacter.getX() + WALK_SPEED);
+    }
 
-		karacter.setWidth(22);
-		karacter.setY(karacter.getY() - WALK_SPEED);
-	}
+    public void up() {
 
-	public void down()
-	{
-		if (karacter.getAnimation() != downAnimation)
-		{
-			karacter.setAnimation(downAnimation);
-		}
+        if (karacter.getAnimation() != upAnimation) {
+            karacter.setAnimation(upAnimation);
+        }
 
-		if (karacter.getDirection() != Direction.DOWN)
-		{
-			karacter.setDirection(Direction.DOWN);
-		}
+        if (karacter.getDirection() != Direction.UP) {
+            karacter.setDirection(Direction.UP);
+        }
 
-		karacter.setWidth(22);
-		karacter.setY(karacter.getY() + WALK_SPEED);
-	}
+        karacter.setWidth(22);
+        karacter.setY(karacter.getY() - WALK_SPEED);
+    }
+
+    public void down() {
+
+        if (karacter.getAnimation() != downAnimation) {
+            karacter.setAnimation(downAnimation);
+        }
+
+        if (karacter.getDirection() != Direction.DOWN) {
+            karacter.setDirection(Direction.DOWN);
+        }
+
+        karacter.setWidth(22);
+        karacter.setY(karacter.getY() + WALK_SPEED);
+    }
 
     @Override
-	public void handleAnimation()
-	{
-		int animationCounter = karacter.getAnimationCounter();
+    public void handleAnimation() {
+
+        int animationCounter = karacter.getAnimationCounter();
 
         Direction dir = karacter.getDirection();
 
-		if (animationCounter == karacter.getAnimation().length)
-		{
+        if (animationCounter == karacter.getAnimation().length) {
 
-		}
-		else
-        {
-			if (dir == Direction.LEFT)
-			{
-				switch (animationCounter)
-				{
+        } else {
+            if (dir == Direction.LEFT) {
+                switch (animationCounter) {
                     case 0:
-						//karacter.setX(karacter.getX() - 0);
-						break;
+                        //karacter.setX(karacter.getX() - 0);
+                        break;
 
-					case 1:
-						karacter.setX(karacter.getX() - 5);
-						break;
+                    case 1:
+                        karacter.setX(karacter.getX() - 5);
+                        break;
 
                     case 2:
-						karacter.setX(karacter.getX() + 5);
-						break;
-				}
-			}
-		}
+                        karacter.setX(karacter.getX() + 5);
+                        break;
+                }
+            }
+        }
     }
 }

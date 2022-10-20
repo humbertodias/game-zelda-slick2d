@@ -9,6 +9,7 @@ import java.util.Comparator;
 public class GObjectComparator implements Comparator<Object> {
 
     public int compare(Object obj1, Object obj2) {
+
         GObject gobj1 = (GObject) obj1;
         GObject gobj2 = (GObject) obj2;
 

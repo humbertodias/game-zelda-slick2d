@@ -7,12 +7,24 @@ package zelda.link;
  */
 public class StandState extends LinkState {
 
-    private final static String[] downAnimation = {"Link stand down"};
-    private final static String[] upAnimation = {"Link stand up"};
-    private final static String[] leftAnimation = {"Link stand left"};
-    private final static String[] rightAnimation = {"Link stand right"};
+    private final static String[] downAnimation = {
+        "Link stand down"
+    };
+
+    private final static String[] upAnimation = {
+        "Link stand up"
+    };
+
+    private final static String[] leftAnimation = {
+        "Link stand left"
+    };
+
+    private final static String[] rightAnimation = {
+        "Link stand right"
+    };
 
     public StandState(Link link) {
+
         super(link);
         name = "StandState";
 
@@ -37,6 +49,7 @@ public class StandState extends LinkState {
 
     @Override
     public void handleInput() {
+
         if (game.isjPressed()) {
             link.setState(new SwordState(link));
         } else if (game.islPressed()) {

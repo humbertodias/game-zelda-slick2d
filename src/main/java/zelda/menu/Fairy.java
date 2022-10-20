@@ -10,9 +10,12 @@ import zelda.engine.Game;
  */
 public class Fairy extends GObject {
 
-    private static String[] flyani = {"Fly1", "Fly2"};
+    private static String[] flyani = {
+        "Fly1", "Fly2"
+    };
 
     public Fairy(Game game, int x, int y) {
+
         super(game, x, y, 14, 16, "/images/fairy.png");
 
         spriteLoc.put("Fly1", new Rectangle(0, 0, 14, 16));

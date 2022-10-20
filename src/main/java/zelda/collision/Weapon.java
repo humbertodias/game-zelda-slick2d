@@ -5,7 +5,5 @@ package zelda.collision;
  * by. A GObject may react differently on Bombs and Sword hits.
  */
 public enum Weapon {
-    ARROW,
-    BOMB,
-    SWORD
+        ARROW, BOMB, SWORD
 }

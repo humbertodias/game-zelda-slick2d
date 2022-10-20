@@ -13,11 +13,15 @@ import zelda.engine.Game;
 public class Controller implements Runnable, KeyListener {
 
     private final Thread thread;
+
     private final Game game;
+
     private final View view;
+
     private PolyCreator polyCreator;
 
     public Controller(Game game, View view, JFrame frame) {
+
         this.game = game;
         this.view = view;
 
@@ -33,10 +37,11 @@ public class Controller implements Runnable, KeyListener {
      * react on input and draw the game.
      */
     public void run() {
+
         while (game.isRunning()) {
             try {
                 if (!game.isPaused()) {
-                    
+
                     game.getScene().handleInput(); // let scene handle user input for menu's etc.
 
                     game.getLink().handleInput(); // let link handle key input.
@@ -61,6 +66,7 @@ public class Controller implements Runnable, KeyListener {
     }
 
     public void keyPressed(KeyEvent e) {
+
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             game.setRunning(false); //quit game
         }
@@ -98,6 +104,7 @@ public class Controller implements Runnable, KeyListener {
     }
 
     public void keyReleased(KeyEvent e) {
+
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
                 game.setaPressed(false);
@@ -127,5 +134,6 @@ public class Controller implements Runnable, KeyListener {
     }
 
     public void keyTyped(KeyEvent e) {
+
     }
 }

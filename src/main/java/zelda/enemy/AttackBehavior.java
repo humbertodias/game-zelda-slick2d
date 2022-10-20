@@ -11,17 +11,21 @@ import zelda.link.Link;
 public class AttackBehavior extends Behavior {
 
     private final Character soldier;
+
     private final Link link;
 
     private int valueX;
+
     private int valueY;
 
     public AttackBehavior(Character soldier) {
+
         this.soldier = soldier;
         link = soldier.getGame().getLink();
     }
 
     public void behave() {
+
         valueX = Math.abs(link.getX() - soldier.getX());
         valueY = Math.abs(link.getY() - soldier.getY());
 
@@ -44,18 +48,18 @@ public class AttackBehavior extends Behavior {
             }
         } else //Set new direction for soldier
         //Soldier left
-         if (link.getX() < soldier.getX()) {
-                soldier.setX(soldier.getX() - 1);
-                if (soldier.getDirection() != Direction.LEFT) {
-                    soldier.setDirection(Direction.LEFT);
-                }
-            } //Soldier right
-            else if (link.getX() > soldier.getX()) {
-                soldier.setX(soldier.getX() + 1);
-                if (soldier.getDirection() != Direction.RIGHT) {
-                    soldier.setDirection(Direction.RIGHT);
-                }
+        if (link.getX() < soldier.getX()) {
+            soldier.setX(soldier.getX() - 1);
+            if (soldier.getDirection() != Direction.LEFT) {
+                soldier.setDirection(Direction.LEFT);
             }
+        } //Soldier right
+        else if (link.getX() > soldier.getX()) {
+            soldier.setX(soldier.getX() + 1);
+            if (soldier.getDirection() != Direction.RIGHT) {
+                soldier.setDirection(Direction.RIGHT);
+            }
+        }
 
         //Set new X for soldier
         //Soldier left

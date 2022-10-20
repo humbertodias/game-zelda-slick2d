@@ -10,16 +10,24 @@ import zelda.engine.Game;
  */
 public class GuiHeart extends GObject {
 
-    private final static String[] fullAnimation = {"full"};
-    private final static String[] emptyAnimation = {"empty"};
+    private final static String[] fullAnimation = {
+        "full"
+    };
+
+    private final static String[] emptyAnimation = {
+        "empty"
+    };
 
     public final static int HEART_LENGTH = 5;
+
     private static int i = 0;
+
     private static GuiHeart[] hearts = new GuiHeart[HEART_LENGTH];
 
     private boolean full = true;
 
     public GuiHeart(Game game, int x, int y) {
+
         super(game, x, y, 11, 10, "/images/guihearts2.png");
         spriteLoc.put("full", new Rectangle(0, 0, 11, 10));
         spriteLoc.put("empty", new Rectangle(11, 0, 11, 10));
@@ -41,6 +49,7 @@ public class GuiHeart extends GObject {
 
     @Override
     public void preAnimation() {
+
         int empty = HEART_LENGTH - game.getLink().getHealth();
 
         //System.out.println(empty);
@@ -60,10 +69,12 @@ public class GuiHeart extends GObject {
     }
 
     public void setFull(boolean full) {
+
         this.full = full;
     }
 
     public static void clear() {
+
         i = 0;
     }
 }

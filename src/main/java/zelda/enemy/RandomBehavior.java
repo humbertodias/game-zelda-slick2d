@@ -12,13 +12,16 @@ public class RandomBehavior extends Behavior {
     private final WhiteSoldier soldier;
 
     private final long inputInterval = 5000;
+
     private long lastInput = System.currentTimeMillis();
 
     public RandomBehavior(WhiteSoldier soldier) {
+
         this.soldier = soldier;
     }
 
     public void behave() {
+
         if (System.currentTimeMillis() > lastInput + inputInterval) {
             Random random = new Random();
             int r = random.nextInt(3);

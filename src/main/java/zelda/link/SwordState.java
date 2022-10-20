@@ -14,17 +14,34 @@ import zelda.character.Direction;
  */
 public class SwordState extends LinkState {
 
-    private final static String[] downAnimation = {"Link sword down 1", "Link sword down 2", "Link sword down 3", "Link sword down 4", "Link sword down 5", "Link sword down 6"};
-    private final static String[] upAnimation = {"Link sword up 1", "Link sword up 2", "Link sword up 3", "Link sword up 4", "Link sword up 5", "Link sword up 6", "Link sword up 7", "Link sword up 8", "Link sword up 9"};
-    private final static String[] leftAnimation = {"Link sword left 1", "Link sword left 2", "Link sword left 3", "Link sword left 4", "Link sword left 5", "Link sword left 6", "Link sword left 7", "Link sword left 8", "Link sword left 9"};
-    private final static String[] rightAnimation = {"Link sword right 1", "Link sword right 2", "Link sword right 3", "Link sword right 4", "Link sword right 5", "Link sword right 6", "Link sword right 7", "Link sword right 8"};
+    private final static String[] downAnimation = {
+        "Link sword down 1", "Link sword down 2", "Link sword down 3", "Link sword down 4", "Link sword down 5",
+        "Link sword down 6"
+    };
+
+    private final static String[] upAnimation = {
+        "Link sword up 1", "Link sword up 2", "Link sword up 3", "Link sword up 4", "Link sword up 5",
+        "Link sword up 6", "Link sword up 7", "Link sword up 8", "Link sword up 9"
+    };
+
+    private final static String[] leftAnimation = {
+        "Link sword left 1", "Link sword left 2", "Link sword left 3", "Link sword left 4", "Link sword left 5",
+        "Link sword left 6", "Link sword left 7", "Link sword left 8", "Link sword left 9"
+    };
+
+    private final static String[] rightAnimation = {
+        "Link sword right 1", "Link sword right 2", "Link sword right 3", "Link sword right 4", "Link sword right 5",
+        "Link sword right 6", "Link sword right 7", "Link sword right 8"
+    };
 
     private Rectangle sword;
 
     private int oldX, oldY;
+
     private long oldAnimationInterval;
 
     public SwordState(Link link) {
+
         super(link);
         name = "SwordState";
 
@@ -68,6 +85,7 @@ public class SwordState extends LinkState {
 
     @Override
     public void handleInput() {
+
         for (GObject obj : link.getGame().getScene().getGObjects()) {
             final Area area = new Area();
             area.add(new Area(sword));
@@ -82,6 +100,7 @@ public class SwordState extends LinkState {
 
     @Override
     public void handleAnimation() {
+
         int animationCounter = link.getAnimationCounter();
 
         //System.out.println("Animation Counter is " + animationCounter);

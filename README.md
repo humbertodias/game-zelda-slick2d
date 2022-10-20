@@ -45,5 +45,5 @@ mvn package exec:java -Dexec.mainClass="zelda.Main"
 	[http://www.spriters-resource.com](http://www.spriters-resource.com/snes/legendofzeldaalinktothepast/)
 
 2. Slick2D Home
-	
+
 	[http://slick.ninjacave.com/](http://slick.ninjacave.com/)

@@ -24,9 +24,11 @@ public abstract class ZeldaScene extends Scene {
     private boolean adjust = false;
 
     private final int XSen; //left/right sensitivity for when the scene adapts too link
+
     private final int YSen; //up/down sensitivity for when the scene adapts too link
 
     public ZeldaScene(Game game, String img, String sceneName) {
+
         super(game, img, sceneName);
 
         XSen = game.getWidth() / 2;
@@ -49,6 +51,7 @@ public abstract class ZeldaScene extends Scene {
 
     @Override
     public void handleInput() {
+
         super.handleInput();
 
         checkLinkIsInExit();
@@ -58,7 +61,8 @@ public abstract class ZeldaScene extends Scene {
         }
 
         if (adjust) {
-            if (!game.getLink().getStateString().equals("SwordState") && !game.getLink().getStateString().equals("BowState")) //ignore swordstate and bowstate
+            if (!game.getLink().getStateString().equals("SwordState")
+                && !game.getLink().getStateString().equals("BowState")) //ignore swordstate and bowstate
             {
                 adjustScene(game.getLink().getX(), game.getLink().getY());
             }
@@ -71,9 +75,11 @@ public abstract class ZeldaScene extends Scene {
     }
 
     public void inputHook() {
+
     }
 
     private void checkLinkIsInExit() {
+
         for (Rectangle exit : exits) {
             if (exit.intersects(game.getLink().getRectangle())) {
                 handleSwitchScene(exit);
@@ -82,6 +88,7 @@ public abstract class ZeldaScene extends Scene {
     }
 
     public void adjustScene(int moveToX, int moveToY) {
+
         if (moveToX > (sprite.getWidth() - XSen)) // link moves too far to the right.
         {
             int newX = sprite.getX() + MOD;
@@ -136,6 +143,7 @@ public abstract class ZeldaScene extends Scene {
      */
     @Override
     public void modShapes(int modX, int modY) {
+
         for (Polygon poly : solids) {
             poly.translate(modX, modY);
         }
@@ -155,6 +163,7 @@ public abstract class ZeldaScene extends Scene {
 
     @Override
     public void draw(Graphics2D g2) {
+
         g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
         g2.setColor(Color.white);
 
@@ -166,6 +175,7 @@ public abstract class ZeldaScene extends Scene {
     }
 
     public ArrayList<Rectangle> getExits() {
+
         return exits;
     }
 

@@ -15,16 +15,20 @@ import zelda.engine.Game;
 public class Bomb extends GObject {
 
     //Bomb animation is 2.5 sec so 50 items in array.
-    private final static String[] bombAnimation = {"bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4",
-        "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4", "bomb1",
-        "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4", "bomb1", "bomb1", "bomb1",
-        "bomb1", "bomb2", "bomb3", "bomb4", "bomb2", "bomb3", "bomb2", "bomb8", "bomb4", "bomb2",
-        "bomb3", "bomb2", "bomb8", "bomb4", "bomb8", "bomb4", "bomb9", "bomb9", "bomb10", "bomb10", "bomb10"};
+    private final static String[] bombAnimation = {
+        "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4", "bomb1", "bomb1",
+        "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4", "bomb1", "bomb1", "bomb1", "bomb1", "bomb1",
+        "bomb2", "bomb3", "bomb4", "bomb1", "bomb1", "bomb1", "bomb1", "bomb2", "bomb3", "bomb4", "bomb2", "bomb3",
+        "bomb2", "bomb8", "bomb4", "bomb2", "bomb3", "bomb2", "bomb8", "bomb4", "bomb8", "bomb4", "bomb9", "bomb9",
+        "bomb10", "bomb10", "bomb10"
+    };
+
     private Behavior behavior;
 
     private Rectangle bomb;
 
     public Bomb(Game game, int x, int y) {
+
         super(game, x, y, 13, 16, "/images/bombs.png");
 
         spriteLoc.put("bomb1", new Rectangle(0, 0, 13, 16));
@@ -50,6 +54,7 @@ public class Bomb extends GObject {
 
     @Override
     public void preAnimation() {
+
         if (animationCounter == 1) {
             game.playFx("/sounds/linkBounce.mp3");
         }
@@ -66,6 +71,7 @@ public class Bomb extends GObject {
 
     @Override
     public void doInLoop() {
+
         behavior.behave();
 
         if (animationCounter > 48) {

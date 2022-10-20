@@ -15,22 +15,46 @@ import zelda.link.Link;
 public class Arrow extends GObject {
 
     //Arrow animation at the moment only one animation
-    private final static String[] arrowRight = {"arrowRight"};
-    private final static String[] arrowLeft = {"arrowLeft"};
-    private final static String[] arrowDown = {"arrowDown"};
-    private final static String[] arrowUp = {"arrowUp"};
+    private final static String[] arrowRight = {
+        "arrowRight"
+    };
 
-    private final static String[] arrowHitDown = {"arrowDown1", "arrowDown2", "arrowDown3", "arrowDown1", "arrowDown2", "arrowDown3"};
-    private final static String[] arrowHitUp = {"arrowUp1", "arrowUp2", "arrowUp3", "arrowUp1", "arrowUp2", "arrowUp3"};
-    private final static String[] arrowHitLeft = {"arrowLeft1", "arrowLeft2", "arrowLeft3", "arrowLeft1", "arrowLeft2", "arrowLeft3"};
-    private final static String[] arrowHitRight = {"arrowRight1", "arrowRight2", "arrowRight3", "arrowRight1", "arrowRight2", "arrowRight3"};
+    private final static String[] arrowLeft = {
+        "arrowLeft"
+    };
+
+    private final static String[] arrowDown = {
+        "arrowDown"
+    };
+
+    private final static String[] arrowUp = {
+        "arrowUp"
+    };
+
+    private final static String[] arrowHitDown = {
+        "arrowDown1", "arrowDown2", "arrowDown3", "arrowDown1", "arrowDown2", "arrowDown3"
+    };
+
+    private final static String[] arrowHitUp = {
+        "arrowUp1", "arrowUp2", "arrowUp3", "arrowUp1", "arrowUp2", "arrowUp3"
+    };
+
+    private final static String[] arrowHitLeft = {
+        "arrowLeft1", "arrowLeft2", "arrowLeft3", "arrowLeft1", "arrowLeft2", "arrowLeft3"
+    };
+
+    private final static String[] arrowHitRight = {
+        "arrowRight1", "arrowRight2", "arrowRight3", "arrowRight1", "arrowRight2", "arrowRight3"
+    };
 
     private final static int SPEED = 3;
+
     private boolean hit = false;
 
     private Direction direction;
 
     public Arrow(Game game, int x, int y) {
+
         super(game, x, y, 13, 4, "/images/arrows.png");
 
         // Arrow Direction only
@@ -86,8 +110,10 @@ public class Arrow extends GObject {
 
     @Override
     public void doInLoop() {
+
         // if arrow moves outside of the scene it should die.
-        if (x > game.getScene().getSprite().getWidth() || y > game.getScene().getSprite().getWidth() || x < 0 || y < 0) {
+        if (x > game.getScene().getSprite().getWidth() || y > game.getScene().getSprite().getWidth() || x < 0
+            || y < 0) {
             alive = false;
             return;
         }
@@ -113,6 +139,7 @@ public class Arrow extends GObject {
 
     @Override
     public void preAnimation() {
+
         if (hit) {
             liquid = true;
             if (animationCounter == animation.length) {
@@ -123,11 +150,13 @@ public class Arrow extends GObject {
 
     @Override
     public void wallCollision() {
+
         arrowHitSomething();
     }
 
     @Override
     public void collision(GObject obj) {
+
         if (obj instanceof Hittable && !(obj instanceof Link) && !(obj instanceof Bush)) {
             Hittable hittable = (Hittable) obj;
             hittable.hitBy(Weapon.ARROW);
@@ -161,6 +190,7 @@ public class Arrow extends GObject {
     }
 
     private void arrowHitSomething() {
+
         // Arrow wiggel animation
         switch (direction) {
             case UP:

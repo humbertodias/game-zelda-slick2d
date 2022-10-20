@@ -10,14 +10,26 @@ import zelda.character.Direction;
  */
 public class BowState extends LinkState {
 
-    private final static String[] downAnimation = {"Link bow down 1", "Link bow down 2", "Link bow down 3"};
-    private final static String[] upAnimation = {"Link bow up 1", "Link bow up 2", "Link bow up 3"};
-    private final static String[] leftAnimation = {"Link bow left 1", "Link bow left 2", "Link bow left 3"};
-    private final static String[] rightAnimation = {"Link bow right 1", "Link bow right 2"};
+    private final static String[] downAnimation = {
+        "Link bow down 1", "Link bow down 2", "Link bow down 3"
+    };
+
+    private final static String[] upAnimation = {
+        "Link bow up 1", "Link bow up 2", "Link bow up 3"
+    };
+
+    private final static String[] leftAnimation = {
+        "Link bow left 1", "Link bow left 2", "Link bow left 3"
+    };
+
+    private final static String[] rightAnimation = {
+        "Link bow right 1", "Link bow right 2"
+    };
 
     private int oldX, oldY;
 
     public BowState(Link link) {
+
         super(link);
         name = "BowState";
 
@@ -52,6 +64,7 @@ public class BowState extends LinkState {
 
     @Override
     public void handleAnimation() {
+
         int animationCounter = link.getAnimationCounter();
 
         if (animationCounter == link.getAnimation().length) {

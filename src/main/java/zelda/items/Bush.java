@@ -13,18 +13,24 @@ import zelda.engine.Game;
 public class Bush extends GObject implements Hittable {
 
     public Bush(Game game, int x, int y) {
+
         super(game, x, y, 16, 14, "/images/items.png");
         spriteLoc.put("bush", new Rectangle(0, 0, 16, 15));
         spriteLoc.put("stump", new Rectangle(17, 0, 16, 15));
 
-        String[] bushani = {"bush"};
+        String[] bushani = {
+            "bush"
+        };
         setAnimation(bushani);
         sprite.setSprite(spriteLoc.get("bush"));
     }
 
     public void hitBy(Weapon weapon) {
+
         if (weapon == Weapon.SWORD) {
-            String[] bushani = {"stump"};
+            String[] bushani = {
+                "stump"
+            };
             setAnimation(bushani);
 
             if (liquid == false) {
@@ -36,7 +42,9 @@ public class Bush extends GObject implements Hittable {
             liquid = true;
         }
         if (weapon == Weapon.BOMB) {
-            String[] bushani = {"stump"};
+            String[] bushani = {
+                "stump"
+            };
             setAnimation(bushani);
 
             if (liquid == false) {

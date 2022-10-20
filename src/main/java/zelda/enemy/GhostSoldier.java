@@ -13,12 +13,14 @@ import zelda.character.Direction;
 public class GhostSoldier extends Soldier implements Hittable {
 
     public GhostSoldier(Game game, int x, int y, Direction direction) {
+
         super(game, x, y, direction, "/images/boss.png");
         behavior = new AttackBehavior(this);
         health = 20;
     }
 
     public void hitBy(Weapon weapon) {
+
         if (health >= 1) {
             game.playFx("/sounds/enemyHit.mp3");
         }

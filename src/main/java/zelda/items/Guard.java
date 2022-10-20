@@ -11,12 +11,24 @@ import zelda.character.Direction;
  */
 public class Guard extends GObject {
 
-    private final static String[] downAnimation = {"DOWN"};
-    private final static String[] upAnimation = {"UP"};
-    private final static String[] leftAnimation = {"LEFT"};
-    private final static String[] rightAnimation = {"RIGHT"};
+    private final static String[] downAnimation = {
+        "DOWN"
+    };
+
+    private final static String[] upAnimation = {
+        "UP"
+    };
+
+    private final static String[] leftAnimation = {
+        "LEFT"
+    };
+
+    private final static String[] rightAnimation = {
+        "RIGHT"
+    };
 
     public Guard(Game game, int x, int y, Direction direction) {
+
         super(game, x, y, 25, 25, "/images/items.png");
 
         spriteLoc.put("DOWN", new Rectangle(0, 25, 25, 30));

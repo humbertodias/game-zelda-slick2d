@@ -7,13 +7,29 @@ import zelda.character.Direction;
  */
 public class WalkState extends LinkState {
 
-    private final static String[] downAnimation = {"Link walk down 1", "Link walk down 2", "Link walk down 3", "Link walk down 6", "Link walk down 5", "Link walk down 4"};
-    private final static String[] upAnimation = {"Link walk up 3", "Link walk up 2", "Link walk up 1", "Link walk up 4", "Link walk up 6", "Link walk up 5"};
-    private final static String[] leftAnimation = {"Link walk left 3", "Link walk left 2", "Link walk left 1", "Link walk left 4", "Link walk left 5", "Link walk left 6"};
-    private final static String[] rightAnimation = {"Link walk right 3", "Link walk right 2", "Link walk right 1", "Link walk right 4", "Link walk right 5", "Link walk right 6"};
+    private final static String[] downAnimation = {
+        "Link walk down 1", "Link walk down 2", "Link walk down 3", "Link walk down 6", "Link walk down 5",
+        "Link walk down 4"
+    };
+
+    private final static String[] upAnimation = {
+        "Link walk up 3", "Link walk up 2", "Link walk up 1", "Link walk up 4", "Link walk up 6", "Link walk up 5"
+    };
+
+    private final static String[] leftAnimation = {
+        "Link walk left 3", "Link walk left 2", "Link walk left 1", "Link walk left 4", "Link walk left 5",
+        "Link walk left 6"
+    };
+
+    private final static String[] rightAnimation = {
+        "Link walk right 3", "Link walk right 2", "Link walk right 1", "Link walk right 4", "Link walk right 5",
+        "Link walk right 6"
+    };
+
     private final static int WALK_SPEED = 4;
 
     public WalkState(Link link) {
+
         super(link);
         name = "WalkState";
         link.setAnimationInterval(90);
@@ -21,6 +37,7 @@ public class WalkState extends LinkState {
 
     @Override
     public void handleInput() {
+
         if (game.isjPressed()) {
             link.setState(new SwordState(link));
         } else if (link.noMoveinput()) {
@@ -49,6 +66,7 @@ public class WalkState extends LinkState {
     }
 
     private void left() {
+
         if (link.getAnimation() != leftAnimation) {
             link.setAnimation(leftAnimation);
         }
@@ -61,6 +79,7 @@ public class WalkState extends LinkState {
     }
 
     private void right() {
+
         if (link.getAnimation() != rightAnimation) {
             link.setAnimation(rightAnimation);
         }
@@ -73,6 +92,7 @@ public class WalkState extends LinkState {
     }
 
     private void up() {
+
         if (link.getAnimation() != upAnimation) {
             link.setAnimation(upAnimation);
         }
@@ -85,6 +105,7 @@ public class WalkState extends LinkState {
     }
 
     private void down() {
+
         if (link.getAnimation() != downAnimation) {
             link.setAnimation(downAnimation);
         }

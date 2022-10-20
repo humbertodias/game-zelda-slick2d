@@ -11,9 +11,11 @@ import zelda.engine.Scene;
 public class HelpMenu extends Scene {
 
     private long inputInterval = 100;
+
     private long lastInput = System.currentTimeMillis();
 
     public HelpMenu(Game game) {
+
         super(game, "/images/help-menu.png", "HelpMenu");
 
         sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
@@ -28,6 +30,7 @@ public class HelpMenu extends Scene {
 
     @Override
     public void handleInput() {
+
         if (System.currentTimeMillis() > lastInput + inputInterval) {
             if (game.isEnterPressed()) {
                 game.setScene(new MainMenu(game));

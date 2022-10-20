@@ -9,7 +9,9 @@ import zelda.engine.Game;
 public class Main extends JFrame {
 
     private final Game game;
+
     private final View view;
+
     private final Controller ctl;
 
     public Main() {
@@ -31,7 +33,8 @@ public class Main extends JFrame {
         ctl = new Controller(game, view, this);
     }
 
-    public static void main(String ... args) {
+    public static void main(String... args) {
+
         new Main();
     }
 }

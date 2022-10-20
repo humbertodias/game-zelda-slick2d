@@ -14,14 +14,19 @@ public class MainMenu extends Scene {
     private Fairy fairy = new Fairy(game, 210, 215);
 
     private static int CURRENT = 0;
+
     private static final int NEW_GAME = 0;
+
     private static final int LOAD_GAME = 1;
+
     private static final int HELP = 2;
 
     private long inputInterval = 100;
+
     private long lastInput = System.currentTimeMillis();
 
     public MainMenu(Game game) {
+
         super(game, "/images/main-menu.png", "MainMenu");
 
         sprite.setSprite(new Rectangle(0, 0, game.getWidth(), game.getHeight()));
@@ -38,6 +43,7 @@ public class MainMenu extends Scene {
 
     @Override
     public void handleInput() {
+
         if (System.currentTimeMillis() > lastInput + inputInterval) {
             checkEnter();
             checkInput();
@@ -47,6 +53,7 @@ public class MainMenu extends Scene {
     }
 
     private void checkEnter() {
+
         if (game.isEnterPressed()) {
             switch (CURRENT) {
                 case NEW_GAME:
@@ -65,6 +72,7 @@ public class MainMenu extends Scene {
     }
 
     private void checkInput() {
+
         if (game.issPressed()) {
             if (CURRENT == HELP) {
                 CURRENT = NEW_GAME;
@@ -83,6 +91,7 @@ public class MainMenu extends Scene {
     }
 
     private void setFairy() {
+
         switch (CURRENT) {
             case NEW_GAME:
                 fairy.setY(220);

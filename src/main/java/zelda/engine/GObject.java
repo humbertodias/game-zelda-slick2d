@@ -16,27 +16,39 @@ import zelda.items.Rupee;
 public abstract class GObject implements DrawAble {
 
     protected Game game;
+
     protected boolean alive = true;
 
     protected int x;
+
     protected int y;
+
     protected int z = 0;
 
     protected int width;
+
     protected int height;
 
     protected boolean checkcollision = true; // Should the objects check for collisions when x or y moves.
-    protected boolean liquid = false;		 // Can other GObjects move through the object.
-    protected boolean screenAdjust = true;    // Does this object adjust its position when the screen moves.
+
+    protected boolean liquid = false; // Can other GObjects move through the object.
+
+    protected boolean screenAdjust = true; // Does this object adjust its position when the screen moves.
 
     protected Sprite sprite;
+
     protected static HashMap<String, Rectangle> spriteLoc = new HashMap<>();
+
     protected String[] animation;
+
     protected int animationCounter = 0;
+
     protected long animationInterval;
+
     protected long lastAnimation = System.currentTimeMillis();
 
     public GObject(Game game, int x, int y, int width, int height, String image) {
+
         animationInterval = 90;
         this.game = game;
 
@@ -52,18 +64,21 @@ public abstract class GObject implements DrawAble {
      * What the GObject is supposed to do in the loop.
      */
     public void doInLoop() {
+
     }
 
     /**
      * What the GObject needs to do pre animation.
      */
     protected void preAnimation() {
+
     }
 
     /**
      * What the GObject needs to do post animation.
      */
     protected void postAnimation() {
+
     }
 
     /**
@@ -72,12 +87,15 @@ public abstract class GObject implements DrawAble {
      * @param hitObject
      */
     protected void collision(GObject hitObject) {
+
     }
 
     protected void wallCollision() {
+
     }
 
     public void animate() {
+
         if (System.currentTimeMillis() > lastAnimation + animationInterval) // if it time to reanimate
         {
             preAnimation();
@@ -105,11 +123,13 @@ public abstract class GObject implements DrawAble {
     }
 
     public void draw(Graphics2D g) {
+
         Image img = sprite.getImage();
         g.drawImage(img, x, y, sprite.getWidth(), sprite.getHeight(), null);
     }
 
     private boolean isCollision(int newX, int newY) {
+
         Rectangle rect = new Rectangle(newX, newY, width, height);
         boolean collision = false;
 
@@ -150,118 +170,146 @@ public abstract class GObject implements DrawAble {
     }
 
     public int getX() {
+
         return x;
     }
 
     public void setX(int newX) {
+
         if (!checkcollision || !isCollision(newX, y)) {
             x = newX;
         }
     }
 
     public int getY() {
+
         return y;
     }
 
     public void setY(int newY) {
+
         if (!checkcollision || !isCollision(x, newY)) {
             y = newY;
         }
     }
 
     public int getZ() {
+
         return z;
     }
 
     public void setYHardCore(int y) {
+
         this.y = y;
     }
 
     public void setXHardCore(int x) {
+
         this.x = x;
     }
 
     public int getHeight() {
+
         return height;
     }
 
     public void setHeight(int height) {
+
         this.height = height;
     }
 
     public int getWidth() {
+
         return width;
     }
 
     public void setWidth(int width) {
+
         this.width = width;
     }
 
     public Game getGame() {
+
         return game;
     }
 
     public boolean isAlive() {
+
         return alive;
     }
 
     public void setAlive(boolean alive) {
+
         this.alive = alive;
     }
 
     public Rectangle getRectangle() {
+
         return new Rectangle(x, y, width, height);
     }
 
     public String[] getAnimation() {
+
         return animation;
     }
 
     public void setAnimation(String[] animation) {
+
         this.animation = animation;
     }
 
     public void resetAnimationCounter() {
+
         animationCounter = 0;
     }
 
     public int getAnimationCounter() {
+
         return animationCounter;
     }
 
     public long getAnimationInterval() {
+
         return animationInterval;
     }
 
     public void setAnimationInterval(long animationInterval) {
+
         this.animationInterval = animationInterval;
     }
 
     public boolean isCheckcollision() {
+
         return checkcollision;
     }
 
     public void setCheckcollision(boolean checkcollision) {
+
         this.checkcollision = checkcollision;
     }
 
     public boolean isLiquid() {
+
         return liquid;
     }
 
     public void setLiquid(boolean liquid) {
+
         this.liquid = liquid;
     }
 
     public boolean isScreenAdjust() {
+
         return screenAdjust;
     }
 
     public void setScreenAdjust(boolean screenAdjust) {
+
         this.screenAdjust = screenAdjust;
     }
 
     public void randomGoodie() {
+
         int r = (int) (Math.random() * 200);
         //System.out.println(r);
 

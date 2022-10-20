@@ -13,12 +13,17 @@ import java.util.Iterator;
 public abstract class Scene implements DrawAble {
 
     protected Sprite sprite;
+
     protected Game game;
 
     protected ArrayList<GObject> newGameObjects = new ArrayList<GObject>();
+
     protected ArrayList<GObject> gameObjects = new ArrayList<GObject>();
+
     protected ArrayList<Polygon> solids = new ArrayList<Polygon>();
+
     protected ArrayList<Rectangle> hitters = new ArrayList<Rectangle>();
+
     protected ArrayList<Polygon> eyeViews = new ArrayList<Polygon>();
 
     protected String sceneName;
@@ -26,16 +31,19 @@ public abstract class Scene implements DrawAble {
     protected final static int MOD = 1;
 
     public Scene(Game game, String img, String sceneName) {
+
         this.game = game;
         sprite = new Sprite(img);
         this.sceneName = sceneName;
     }
 
     public void draw(Graphics2D g2) {
+
         g2.drawImage(sprite.getImage(), 0, 0, game.getWidth(), game.getHeight(), null);
     }
 
     public synchronized void handleInput() {
+
         for (GObject obj : newGameObjects) {
             gameObjects.add(obj);
         }
@@ -53,6 +61,7 @@ public abstract class Scene implements DrawAble {
     }
 
     public void moveScene(int toX, int toY) {
+
         boolean moved = false;
 
         do {
@@ -112,6 +121,7 @@ public abstract class Scene implements DrawAble {
      * @param modY
      */
     public void modShapes(int modX, int modY) {
+
         for (Polygon poly : solids) {
             poly.translate(modX, modY);
         }
@@ -126,51 +136,63 @@ public abstract class Scene implements DrawAble {
     }
 
     public void addGObject(GObject gObject) {
+
         gameObjects.add(gObject);
     }
 
     public void addNewGObject(GObject gObject) {
+
         newGameObjects.add(gObject);
     }
 
     public ArrayList<Polygon> getSolids() {
+
         return solids;
     }
 
     public ArrayList<GObject> getGObjects() {
+
         return gameObjects;
     }
 
     public void addHitter(Rectangle rect) {
+
         hitters.add(rect);
     }
 
     public void removeHitter(Rectangle rect) {
+
         hitters.remove(rect);
     }
 
     public ArrayList<Rectangle> getHitters() {
+
         return hitters;
     }
 
     public void addEyeView(Polygon poly) {
+
         eyeViews.add(poly);
     }
 
     public void removeEyeView(Polygon poly) {
+
         eyeViews.remove(poly);
     }
 
     public ArrayList<Polygon> getEyeViews() {
+
         return eyeViews;
     }
 
     public String getName() {
+
         return sceneName;
     }
 
     //remove after done with PolyCreator
     public Sprite getSprite() {
+
         return sprite;
     }
 }

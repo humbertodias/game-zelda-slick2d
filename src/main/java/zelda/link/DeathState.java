@@ -8,12 +8,18 @@ import zelda.scene.HouseScene;
  */
 public class DeathState extends LinkState {
 
-    private final String[] deathRightAnimation = {"Link hit right", "Link death right", "Link death right 2"};
-    private final String[] deathLeftAnimation = {"Link hit left", "Link death left", "Link death left 2"};
+    private final String[] deathRightAnimation = {
+        "Link hit right", "Link death right", "Link death right 2"
+    };
+
+    private final String[] deathLeftAnimation = {
+        "Link hit left", "Link death left", "Link death left 2"
+    };
 
     private long oldAnimationInterval;
 
     public DeathState(Link link, Direction direction) {
+
         super(link);
         name = "DeathState";
 
@@ -40,6 +46,7 @@ public class DeathState extends LinkState {
 
     @Override
     public void handleAnimation() {
+
         int animationCounter = link.getAnimationCounter();
 
         if (animationCounter == link.getAnimation().length) {

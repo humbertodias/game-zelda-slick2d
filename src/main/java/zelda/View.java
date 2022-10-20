@@ -24,16 +24,21 @@ public class View {
     private final Game game;
 
     private BufferStrategy buffer;
+
     private BufferedImage bi;
+
     private GraphicsDevice gd;
 
     private final int displayWidth = 640;
+
     private final int displayHeight = 480;
 
     private int x;
+
     private int y;
 
     public View(Game game, JFrame frame) {
+
         this.game = game;
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -41,16 +46,14 @@ public class View {
         GraphicsConfiguration gc = gd.getDefaultConfiguration();
 
         if (!game.isDebug()) {
-            if(game.isFullscreen()){
+            if (game.isFullscreen()) {
                 gd.setFullScreenWindow(frame); //needs to be done before call too isDisplayChangeSupported
             }
 
             if (gd.isDisplayChangeSupported()) {
-                //gd.setDisplayMode(new DisplayMode(displayWidth, displayHeight, 32, DisplayMode.REFRESH_RATE_UNKNOWN));
                 DisplayMode displayMode = getValidDisplayMode(ge);
                 gd.setDisplayMode(displayMode);
             }
-
         }
 
         frame.createBufferStrategy(2);
@@ -59,21 +62,23 @@ public class View {
         bi = gc.createCompatibleImage(game.getWidth(), game.getHeight());
 
         //calculate the x and y for centering in fullscreen mode.
-        if (!game.isFullscreen()) {
+        if (!game.isDebug()) {
             x = (displayWidth - game.getWidth()) / 2;
             y = (displayHeight - game.getHeight()) / 2;
         }
     }
 
-    private DisplayMode getValidDisplayMode( GraphicsEnvironment ge){
-        for(DisplayMode displayMode:  gd.getDisplayModes()){
-            if(displayMode.getWidth() == displayWidth && displayMode.getHeight() == displayWidth)
+    private DisplayMode getValidDisplayMode(GraphicsEnvironment ge) {
+
+        for (DisplayMode displayMode : gd.getDisplayModes()) {
+            if (displayMode.getWidth() == displayWidth && displayMode.getHeight() == displayWidth)
                 return displayMode;
         }
         return gd.getDisplayModes()[0];
     }
 
     public void draw() {
+
         Graphics graphics = buffer.getDrawGraphics();
         Graphics2D g2 = bi.createGraphics();
 
@@ -146,6 +151,7 @@ public class View {
     }
 
     public void exitFullScreen() {
+
         gd.setFullScreenWindow(null);
     }
 }

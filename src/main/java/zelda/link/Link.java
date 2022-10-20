@@ -20,18 +20,23 @@ import zelda.items.GuiHeart;
 public class Link extends Character {
 
     private long inputInterval = 50;
+
     private long lastInput = System.currentTimeMillis();
+
     private long lastHit = System.currentTimeMillis();
 
     private long bomInterval = 3000;
+
     private long lastBom = System.currentTimeMillis();
 
     private long arrowInterval = 1000;
+
     private long lastArrow = System.currentTimeMillis();
 
     private int rupee = 0;
 
     public Link(Game game, int x, int y) {
+
         super(game, x, y, 17, 20, Direction.DOWN, "/images/link.png");
         spriteLoc.put("Link walk down 1", new Rectangle(0, 0, 16, 23));
         spriteLoc.put("Link walk down 2", new Rectangle(25, 0, 16, 23));
@@ -136,6 +141,7 @@ public class Link extends Character {
     }
 
     public void dropBomb() {
+
         if (System.currentTimeMillis() > lastBom + bomInterval) {
             switch (direction) {
                 case UP:
@@ -160,6 +166,7 @@ public class Link extends Character {
     }
 
     public void shootArrow() {
+
         if (System.currentTimeMillis() > lastArrow + arrowInterval) {
             setState(new BowState(this));
             lastArrow = System.currentTimeMillis();
@@ -168,6 +175,7 @@ public class Link extends Character {
 
     public void handleInput() {
         //System.out.println("Link is at:");
+
         //System.out.println(x + ", " + y);
 
         if (System.currentTimeMillis() > lastInput + inputInterval) {
@@ -178,11 +186,13 @@ public class Link extends Character {
 
     @Override
     public void preAnimation() {
+
         state.handleAnimation();
     }
 
     @Override
     protected void collision(GObject hitObject) {
+
         if (health == 0) {
             if (!getStateString().equals("DeathState")) {
                 game.stopMusic();
@@ -231,18 +241,22 @@ public class Link extends Character {
 
     //Handy dandy stuff that handles input
     public boolean moveinput() {
+
         return (game.isaPressed() || game.isdPressed() || game.iswPressed() || game.issPressed());
     }
 
     public boolean noMoveinput() {
+
         return (!game.isaPressed() && !game.isdPressed() && !game.iswPressed() && !game.issPressed());
     }
 
     public int getRupee() {
+
         return rupee;
     }
 
     public void setRupee(int rupee) {
+
         this.rupee = rupee;
     }
 }

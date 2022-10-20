@@ -8,9 +8,11 @@ import java.net.URL;
 public class Music extends Sound {
 
     private String songname = "";
+
     private final boolean loop;
 
     public Music(Game game, URL mp3, String songname, boolean loop) {
+
         super(game, mp3);
 
         this.loop = loop;
@@ -18,6 +20,7 @@ public class Music extends Sound {
     }
 
     public void run() {
+
         while (!player.isComplete()) // if song is not over
         {
             try {
@@ -37,10 +40,12 @@ public class Music extends Sound {
     }
 
     public void stop() {
+
         player.close();
     }
 
     public String getSong() {
+
         return songname;
     }
 }
