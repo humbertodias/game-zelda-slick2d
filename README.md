@@ -2,6 +2,10 @@
 
 RPG game like Zelda using Slick2D Library
 
+## Prerequires
+
+1. Java 8+
+2. Curl
 ## How to Play
 
 
