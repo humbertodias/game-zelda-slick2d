@@ -27,7 +27,9 @@ public class Game {
 
     private boolean running = true;
     private boolean paused = false;
-    private final boolean debug = false;
+    private final boolean debug = true;
+
+    private final boolean fullscreen = false;
 
     private int gameSpeed = 10;
     private final int width = 500;
@@ -300,5 +302,9 @@ public class Game {
 
     public boolean isEnterPressed() {
         return enterPressed;
+    }
+
+    public boolean isFullscreen() {
+        return fullscreen;
     }
 }

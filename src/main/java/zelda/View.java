@@ -41,10 +41,14 @@ public class View {
         GraphicsConfiguration gc = gd.getDefaultConfiguration();
 
         if (!game.isDebug()) {
-            gd.setFullScreenWindow(frame); //needs to be done before call too isDisplayChangeSupported
+            if(game.isFullscreen()){
+                gd.setFullScreenWindow(frame); //needs to be done before call too isDisplayChangeSupported
+            }
 
             if (gd.isDisplayChangeSupported()) {
-                gd.setDisplayMode(new DisplayMode(displayWidth, displayHeight, 32, DisplayMode.REFRESH_RATE_UNKNOWN));
+                //gd.setDisplayMode(new DisplayMode(displayWidth, displayHeight, 32, DisplayMode.REFRESH_RATE_UNKNOWN));
+                DisplayMode displayMode = getValidDisplayMode(ge);
+                gd.setDisplayMode(displayMode);
             }
 
         }
@@ -55,10 +59,18 @@ public class View {
         bi = gc.createCompatibleImage(game.getWidth(), game.getHeight());
 
         //calculate the x and y for centering in fullscreen mode.
-        if (!game.isDebug()) {
+        if (!game.isFullscreen()) {
             x = (displayWidth - game.getWidth()) / 2;
             y = (displayHeight - game.getHeight()) / 2;
         }
+    }
+
+    private DisplayMode getValidDisplayMode( GraphicsEnvironment ge){
+        for(DisplayMode displayMode:  gd.getDisplayModes()){
+            if(displayMode.getWidth() == displayWidth && displayMode.getHeight() == displayWidth)
+                return displayMode;
+        }
+        return gd.getDisplayModes()[0];
     }
 
     public void draw() {
