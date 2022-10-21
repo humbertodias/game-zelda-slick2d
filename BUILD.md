@@ -29,15 +29,6 @@ Run
 mvn package exec:java -Dexec.mainClass="zelda.Main"
 ```
 
-
-## Output
-![Preview](doc/zelda.gif)
-
-## Control
-![Preview](doc/control.png)
-
-
-
 ## References
 
 1. Sprites of **The Legend of Zelda: A Link to the Past**
